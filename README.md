@@ -16,6 +16,7 @@
     - searching for "morgan freeman" yields results from all morgans + freemans
     - this contradicts the requirement: _For e.g. query can be “morgan freeman” which will return a list of movies which has that actor in it._
     - let's change our assumption for combine search results to be an intersection i.e. movies("morgan") intersect movies("freeman")
+    - bug: morgan,:The Wizard of Oz is indexed, fix: do not surround with extra chars in index
 - [ ] Add time tracking in index creation and search
 
 Stretch goals:

@@ -19,8 +19,8 @@ def as_text(movie: dict):
     _text = movie['name'] + "\n"
     _text += str(movie['genre']) + "\n"
     _text += movie['description'] + "\n"
-    _text += ", ".join([d['name'] for d in movie['director']]) + "\n"
-    _text += ", ".join([a['name'] for a in movie['actor']]) + "\n"
+    _text += " ".join([d['name'] for d in movie['director']]) + "\n"
+    _text += " ".join([a['name'] for a in movie['actor']]) + "\n"
 
     return _text
 
@@ -84,6 +84,9 @@ def search_index(index: dict, search_keyword: str = "..."):
 
 def search_movies(filename: str, search_keyword: str = "..."):
     index = make_index(filename)
+
+    # for keyword, results in index.items():
+    #     print(f'{keyword}: {results}')
 
     logger.info(f'Searching for: {search_keyword}')
     results = search_index(index, search_keyword)
