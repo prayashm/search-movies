@@ -24,3 +24,4 @@ Stretch goals:
 - [x] Add reverse index 
 - [ ] Add Typo tolerance with regex
 - [ ] Trie based search
+- [ ] Expose intersection / union of results via `morgan+freeman` vs `morgan freeman`
