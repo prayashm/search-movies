@@ -6,6 +6,7 @@
 ## Usage
 - `python search_movies.py "morgan"`
 - `python search_movies.py "morgan freeman" --debug` will print debug logs
+- `python test_search_movies.py` will run tests
 
 ### Approach
 - [x] Let's start with basic linear search (with python's `__contains__`)
