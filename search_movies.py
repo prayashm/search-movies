@@ -2,7 +2,7 @@ import argparse
 import json
 import logging
 
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(format='[%(levelname)s] %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 def as_text(movie: dict):
@@ -14,7 +14,11 @@ def as_text(movie: dict):
     .actors[].name
     """
 
-    _text = ""
+    _text = movie['name'] + "\n"
+    _text += str(movie['genre']) + "\n"
+    _text += movie['description'] + "\n"
+    _text += "Director: " + ", ".join([d['name'] for d in movie['director']]) + "\n"
+    _text += "Actors: " + ", ".join([a['name'] for a in movie['actor']]) + "\n"
 
     return _text
 
@@ -28,21 +32,24 @@ def make_index(filename: str, search_keyword: str = "...", result_key: str = 'na
         if movie["@type"] != "Movie":
             continue
 
-        title = movie['name']
+        title = movie[result_key]
 
         logger.info(f'Processing {title}')
         index[title] = as_text(movie)
 
     return index
 
-def search_movies(filename: str):
+def search_movies(filename: str, search_keyword: str = "..."):
     index = make_index(filename)
+    
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--file', default='top250.json')
+    parser.add_argument('search_keyword')
     args = parser.parse_args()
 
     filename = args.file
-    search_movies(filename)
+    search_keyword = args.search_keyword
+    search_movies(filename, search_keyword)
