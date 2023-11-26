@@ -28,15 +28,16 @@ def make_index(filename: str, search_keyword: str = "...", result_key: str = 'na
 
     index = {}
 
-    for movie in data:
+    for i, movie in enumerate(data):
         if movie["@type"] != "Movie":
             continue
 
         title = movie[result_key]
 
-        logger.info(f'Processing {title}')
+        logger.debug(f'Processing {title}')
         index[title] = as_text(movie)
 
+    logger.info(f'Indexed {i+1} movies')
     return index
 
 def search_movies(filename: str, search_keyword: str = "..."):
