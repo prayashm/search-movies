@@ -33,15 +33,33 @@ def make_index(filename: str, search_keyword: str = "...", result_key: str = 'na
             continue
 
         title = movie[result_key]
-
         logger.debug(f'Processing {title}')
-        index[title] = as_text(movie)
+
+        movie_text = as_text(movie)
+        for word in movie_text.split():
+            word = word.lower()
+            if word not in index:
+                index[word] = []
+            index[word].append(title)
 
     logger.info(f'Indexed {i+1} movies')
     return index
 
+def search_index(index: dict, search_keyword: str = "..."):
+    search_keyword = search_keyword.lower()
+    if search_keyword not in index:
+        logger.info(f'No results for "{search_keyword}"')
+        return
+
+    for title in index[search_keyword]:
+        logger.info(f'Found: {title}')
+
 def search_movies(filename: str, search_keyword: str = "..."):
     index = make_index(filename)
+
+    logger.info(f'Searching for "{search_keyword}"')
+    search_index(index, search_keyword)
+
     
 
 

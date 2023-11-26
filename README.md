@@ -3,6 +3,9 @@
 ## Setup
 - Ensure you have `Python 3.9.7`
 
+## Usage
+- `python search_movies.py "morgan"`
+
 ### Approach
 [ ] Let's start with basic linear search (with python's __contains__)
     - it could be like movie_name: long text of all the thing by which one can search (actor names, categories)
