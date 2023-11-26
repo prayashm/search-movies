@@ -9,9 +9,9 @@ class TestSearchMovies(unittest.TestCase):
         self.index = make_index(self.filename)
     def test_search_movies(self):
         test_cases = [
-            ('morgan', ['Unforgiven', 'The Shawshank Redemption', 'Se7en', 'Million Dollar Baby']),
-            (' morgan ', ['Unforgiven', 'The Shawshank Redemption', 'Se7en', 'Million Dollar Baby']),
-            ('freeman', ['Unforgiven', 'The Shawshank Redemption', 'Se7en', 'Million Dollar Baby', 'Raiders of the Lost Ark']),
+            ('morgan', ['Unforgiven', 'The Wizard of Oz', 'The Shawshank Redemption', 'Se7en', 'Million Dollar Baby']),
+            (' morgan ', ['Unforgiven', 'The Wizard of Oz', 'The Shawshank Redemption', 'Se7en', 'Million Dollar Baby']),
+            ('freeman', ['Unforgiven', 'The Shawshank Redemption', 'Se7en', 'Raiders of the Lost Ark', 'Million Dollar Baby']),
             ('morgan freeman',['Unforgiven', 'The Shawshank Redemption', 'Se7en', 'Million Dollar Baby']),
             ('asdfasdfasdfasdf', [])
         ]
