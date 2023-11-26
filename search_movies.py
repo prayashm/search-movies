@@ -46,22 +46,38 @@ def make_index(filename: str, search_keyword: str = "...", result_key: str = 'na
     logger.info(f'Indexed {i+1} movies')
     return index
 
+def search_each_keyword(index: dict, keyword: str):
+    hits = set()
+
+    if keyword not in index:
+        logger.debug(f'No results for keyword: {keyword}')
+        return None
+
+    for title in index[keyword]:
+        logger.debug(f'Found: "{title}" using keyword: {keyword}')
+
+        hits.add(title)
+
+    return hits
+
 def search_index(index: dict, search_keyword: str = "..."):
     search_keyword = search_keyword.lower()
     search_keywords = [keyword.strip() for keyword in search_keyword.split()]
+    logger.debug(f'normalised search keywords: {search_keywords}')
 
-    results = []
+    results = set()
 
     for keyword in search_keywords:
-        if keyword not in index:
-            logger.debug(f'No results for keyword: {keyword}')
-            continue
+        hits = search_each_keyword(index, keyword)
+        logger.debug(f'with: {keyword}, hits: {hits}')
 
-        for title in index[keyword]:
-            logger.debug(f'Found: "{title}" using keyword: {keyword}')
+        if hits is None:
+            return []
 
-            if title not in results:
-                results.append(title)
+        if len(results) == 0:
+            results.update(hits)
+        else:
+            results.intersection_update(hits)
 
     return results
 
@@ -69,7 +85,7 @@ def search_index(index: dict, search_keyword: str = "..."):
 def search_movies(filename: str, search_keyword: str = "..."):
     index = make_index(filename)
 
-    logger.info(f'Searching for "{search_keyword}"')
+    logger.info(f'Searching for: {search_keyword}')
     results = search_index(index, search_keyword)
     logger.info(f'Found {len(results)} results')
     logger.info(results)

@@ -12,7 +12,7 @@ class TestSearchMovies(unittest.TestCase):
             ('morgan', ['Unforgiven', 'The Shawshank Redemption', 'Se7en', 'Million Dollar Baby']),
             (' morgan ', ['Unforgiven', 'The Shawshank Redemption', 'Se7en', 'Million Dollar Baby']),
             ('freeman', ['Unforgiven', 'Raiders of the Lost Ark', 'Million Dollar Baby']),
-            ('morgan freeman',['Unforgiven', 'The Shawshank Redemption', 'Se7en', 'Million Dollar Baby', 'Raiders of the Lost Ark']),
+            ('morgan freeman',['Unforgiven', 'The Shawshank Redemption', 'Se7en', 'Million Dollar Baby']),
             ('asdfasdfasdfasdf', [])
         ]
 
