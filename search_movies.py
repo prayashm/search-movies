@@ -6,10 +6,17 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 def as_text(movie: dict):
-    """
+    """ Keys to extract:
+    .name
+    .genre
+    .description
+    .director[].name
+    .actors[].name
     """
 
-    return ""
+    _text = ""
+
+    return _text
 
 def make_index(filename: str, search_keyword: str = "...", result_key: str = 'name'):
     with open(filename, 'r') as f:
