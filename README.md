@@ -43,6 +43,21 @@ Ran 1 test in 0.007s
 OK
 ```
 
+- Coverage
+```
+pip install coverage
+coverage run -m unittest discover
+coverage report --omit='test_*'
+```
+will output
+```
+Name               Stmts   Miss  Cover
+--------------------------------------
+search_movies.py      70     17    76%
+--------------------------------------
+TOTAL                 70     17    76%
+```
+
 ### Approach
 - [x] Let's start with basic linear search (with python's `__contains__`)
     - it could be like movie_name: long text of all the thing by which one can search (actor names, categories)
