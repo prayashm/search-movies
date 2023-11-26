@@ -12,6 +12,14 @@
             "args": ["morgan"],
             "console": "integratedTerminal",
             "justMyCode": true
+        },
+        {
+            "name": "Python: test_search_movies.py",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/test_search_movies.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
         }
     ]
 }

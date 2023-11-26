@@ -54,7 +54,7 @@ def search_index(index: dict, search_keyword: str = "..."):
 
     for keyword in search_keywords:
         if keyword not in index:
-            logger.info(f'No results for "{keyword}"')
+            logger.debug(f'No results for keyword: {keyword}')
             continue
 
         for title in index[keyword]:
