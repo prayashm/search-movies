@@ -17,5 +17,7 @@
 - [ ] Add time tracking in index creation and search
 
 Stretch goals:
-- [ ] Show progress bar when searching
-- [ ] Add reverse index / trie based search
+- ~~[ ] Show progress bar when searching~~, it's super quick
+- [x] Add reverse index 
+- [ ] Add Typo tolerance with regex
+- [ ] Trie based search
