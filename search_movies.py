@@ -19,8 +19,8 @@ def as_text(movie: dict):
     _text = movie['name'] + "\n"
     _text += str(movie['genre']) + "\n"
     _text += movie['description'] + "\n"
-    _text += "Director: " + ", ".join([d['name'] for d in movie['director']]) + "\n"
-    _text += "Actors: " + ", ".join([a['name'] for a in movie['actor']]) + "\n"
+    _text += ", ".join([d['name'] for d in movie['director']]) + "\n"
+    _text += ", ".join([a['name'] for a in movie['actor']]) + "\n"
 
     return _text
 
