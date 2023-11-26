@@ -10,11 +10,21 @@ class TestSearchMovies(unittest.TestCase):
 
     def test_search_movies(self):
         test_cases = [
+            # part names, full names
             ('morgan', ['Unforgiven', 'The Wizard of Oz', 'The Shawshank Redemption', 'Se7en', 'Million Dollar Baby']),
-            (' morgan ', ['Unforgiven', 'The Wizard of Oz', 'The Shawshank Redemption', 'Se7en', 'Million Dollar Baby']),
             ('freeman', ['Unforgiven', 'The Shawshank Redemption', 'Se7en', 'Raiders of the Lost Ark', 'Million Dollar Baby']),
             ('morgan freeman',['Unforgiven', 'The Shawshank Redemption', 'Se7en', 'Million Dollar Baby']),
+
+            # case insensitivity
             ('MorGan FrEeMan', ['Unforgiven', 'The Shawshank Redemption', 'Se7en', 'Million Dollar Baby']),
+
+            # extra spaces
+            (' Morgan Freeman ', ['Unforgiven', 'The Shawshank Redemption', 'Se7en', 'Million Dollar Baby']),
+            (' Morgan   Freeman ', ['Unforgiven', 'The Shawshank Redemption', 'Se7en', 'Million Dollar Baby']),
+            (' Morgan Freeman', ['Unforgiven', 'The Shawshank Redemption', 'Se7en', 'Million Dollar Baby']),
+            ('Morgan Freeman ', ['Unforgiven', 'The Shawshank Redemption', 'Se7en', 'Million Dollar Baby']),
+
+            # no results
             ('asdfasdfasdfasdf', [])
         ]
 
