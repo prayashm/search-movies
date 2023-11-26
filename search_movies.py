@@ -1,11 +1,31 @@
 import argparse
 import json
+import logging
 
-def make_index(filename: str):
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+def as_text(movie: dict):
+    """
+    """
+
+    return ""
+
+def make_index(filename: str, search_keyword: str = "...", result_key: str = 'name'):
     with open(filename, 'r') as f:
         data = json.load(f)
 
     index = {}
+
+    for movie in data:
+        if movie["@type"] != "Movie":
+            continue
+
+        title = movie['name']
+
+        logger.info(f'Processing {title}')
+        index[title] = as_text(movie)
+
     return index
 
 def search_movies(filename: str):
@@ -18,3 +38,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     filename = args.file
+    search_movies(filename)
