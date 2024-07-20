@@ -25,7 +25,27 @@ class TestSearchMovies(unittest.TestCase):
             ('Morgan Freeman ', ['Unforgiven', 'The Shawshank Redemption', 'Se7en', 'Million Dollar Baby']),
 
             # no results
-            ('asdfasdfasdfasdf', [])
+            ('asdfasdfasdfasdf', []),
+
+            # empty search keyword
+            ('', []),
+
+            # search keyword with special characters
+            ('@morgan', []),
+            ('morgan!', []),
+            ('#freeman', []),
+
+            # search keyword with numbers
+            ('morgan123', []),
+            ('123freeman', []),
+
+            # search keyword with mixed case and special characters
+            ('MorGan@FrEeMan', []),
+            ('@MorGan FrEeMan!', []),
+
+            # search keyword with multiple spaces between words
+            ('Morgan   Freeman', ['Unforgiven', 'The Shawshank Redemption', 'Se7en', 'Million Dollar Baby']),
+            ('  Morgan   Freeman  ', ['Unforgiven', 'The Shawshank Redemption', 'Se7en', 'Million Dollar Baby'])
         ]
 
         for search_keyword, expected_results in test_cases:
