@@ -25,6 +25,10 @@ def as_text(movie: dict):
     return _text
 
 def make_index(filename: str, search_keyword: str = "...", result_key: str = 'name'):
+    if not search_keyword.strip():
+        logger.debug('Empty search keyword')
+        return {}
+
     with open(filename, 'r') as f:
         data = json.load(f)
 
@@ -47,6 +51,10 @@ def make_index(filename: str, search_keyword: str = "...", result_key: str = 'na
     return index
 
 def search_each_keyword(index: dict, keyword: str):
+    if not keyword.strip():
+        logger.debug('Empty search keyword')
+        return None
+
     hits = set()
 
     if keyword not in index:
@@ -61,6 +69,10 @@ def search_each_keyword(index: dict, keyword: str):
     return hits
 
 def search_index(index: dict, search_keyword: str = "..."):
+    if not search_keyword.strip():
+        logger.debug('Empty search keyword')
+        return []
+
     search_keyword = search_keyword.lower()
     search_keywords = [keyword.strip() for keyword in search_keyword.split()]
     logger.debug(f'normalised search keywords: {search_keywords}')
@@ -83,6 +95,10 @@ def search_index(index: dict, search_keyword: str = "..."):
 
 
 def search_movies(filename: str, search_keyword: str = "..."):
+    if not search_keyword.strip():
+        logger.debug('Empty search keyword')
+        return []
+
     index = make_index(filename)
 
     # for keyword, results in index.items():
